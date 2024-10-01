@@ -1,40 +1,148 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Creative Factory Code Test
 
-## Getting Started
+## Getting Started ✨ :sparkles:
 
-First, run the development server:
+### Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ npm i
+```
+
+### Start the server
+
+```bash
+$ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Environment Variables
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Add a file named `.env` at the root directory. Ask Repository Owner for the .env file for our application
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Build for Deploy
 
-## Learn More
+```shell
+$ npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### [Static HTML Export](https://nextjs.org/docs/advanced-features/static-html-export)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```shell
+$ npm run export
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Run the Production
 
-## Deploy on Vercel
+```shell
+$ npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Run All Test
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+$ npm run test
+```
+
+### Run Single Test With Watching And Display Coverage
+
+```shell
+$ npm run test filename --watch --coverage
+```
+
+## Project structure
+
+```
+$PROJECT_ROOT
+│   # run some command when you commit
+├── husky
+│   #icon
+├── public
+│
+├── src
+│   │   # all unit tests
+│   ├── tests
+│   │   # all images
+│   ├── assets
+│   │   # react component files
+│   ├── components
+│   │   # Page layout
+│   ├── layouts
+│   │   # Page files
+│   ├── pages
+│   │   # styles
+│   ├── styles
+│   │   # All further encapsulation of libraries
+│   ├── libs
+```
+
+## Project Tech Stack
+
+<table align="center" border=0>
+   <tr>
+      <td width="500"><b>Front-end</b></td>
+   </tr>
+   <tr>
+      <td>
+         • Node Version: v20.14<br>
+         • Framework: Next.js 14 Page Route (The React version we are using is 18)<br>
+         • Scripting Language: Typescript<br>
+         • Styling: TailwindCSS<br>
+         • ApiClient: Axios<br>
+         • Testing: Jest, React-testing-library<br>
+         • Code Control: Eslint, Prettier<br>
+         • Git Hook: Husky，commitlint, lint-staged<br>
+      </td>
+   </tr>
+</table>
+
+## Code of Conduct :clipboard:
+
+<table align="center" border=0>
+   <tr>
+      <td width="500"><b>1. Commit Message</b></td>
+   </tr>
+   <tr>
+      <td>
+         # Semantic Commit Messages
+
+See how a minor change to your commit message style can make you a better programmer.
+
+Format: `<type>(<scope>): <subject>`
+
+`<scope>` is optional
+
+## Example
+
+```
+feat: add hat wobble
+^--^  ^------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
+
+More Examples:
+
+- `feat`: (new feature for the user, not a new feature for build script)
+- `fix`: (bug fix for the user, not a fix to a build script)
+- `docs`: (changes to the documentation)
+- `style`: (formatting, missing semi colons, etc; no production code change)
+- `refactor`: (refactoring production code, eg. renaming a variable)
+- `test`: (adding missing tests, refactoring tests; no production code change)
+- `chore`: (updating grunt tasks etc; no production code change)
+
+References:
+
+- https://www.conventionalcommits.org/
+- https://seesparkbox.com/foundry/semantic_commit_messages
+- http://karma-runner.github.io/1.0/dev/git-commit-msg.html
+  </td>
+   </tr>
+
+</table>
+
+<i><b>Enjoy the journey!</b></i>:clap:
