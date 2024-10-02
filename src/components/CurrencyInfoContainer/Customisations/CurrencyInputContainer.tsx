@@ -3,6 +3,8 @@ import CurrencyInfoContainer from '..';
 import StrongCurrency from '@/components/Typography/StrongCurrency';
 import { LiaCalculatorSolid } from 'react-icons/lia';
 import { useState } from 'react';
+import { Values } from 'react-currency-format';
+import BoldCurrencyFormat from '@/components/CurrencyFormat/BoldCurrencyFormat';
 
 interface CurrencyInputContainerProps {
 	onSubmitCallback: (value: number) => void;
@@ -17,6 +19,11 @@ const CurrencyInputContainer = ({
 		e.preventDefault();
 		onSubmitCallback(currencyValue);
 		setCurrencyValue(0);
+	};
+
+	const handleOnChange = (values: Values) => {
+		const value = values.value;
+		setCurrencyValue(parseFloat(value));
 	};
 
 	return (
@@ -36,15 +43,12 @@ const CurrencyInputContainer = ({
 					</button>
 				}
 			>
-				<label htmlFor="currency"></label>
-				<input
+				<BoldCurrencyFormat
 					data-testid="currencyInput"
-					type="number"
 					name="currency"
-					className="appearance-none border-none outline-none
-            text-right w-auto bg-transparent focus:border-none"
+					prefix={'$'}
 					value={currencyValue}
-					onChange={(e) => setCurrencyValue(parseFloat(e.target.value))}
+					onValueChange={handleOnChange}
 				/>
 			</CurrencyInfoContainer>
 		</form>

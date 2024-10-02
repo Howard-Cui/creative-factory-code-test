@@ -19,7 +19,7 @@ const CurrencyInfoContainer = ({
 			className="w-4/5 h-12 rounded-md border-normal_grey hover:border-focus box-content border
 		 border-2 flex justify-between box-content"
 		>
-			<div className="flex flex-between items-center px-2">
+			<div className="w-11/12 flex justify-between items-center px-2">
 				<div className="flex gap-3 items-center h-full">
 					<ReactCountryFlag countryCode={countryCode} />
 					<h3>{currencyCodeDisplay}</h3>

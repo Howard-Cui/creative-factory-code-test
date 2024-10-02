@@ -13,6 +13,12 @@ importers:
       react:
         specifier: ^18
         version: 18.3.1
+      react-country-flag:
+        specifier: ^3.1.0
+        version: 3.1.0(react@18.3.1)
+      react-currency-format:
+        specifier: ^1.1.0
+        version: 1.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
@@ -47,6 +53,9 @@ importers:
       '@types/react':
         specifier: ^18
         version: 18.3.10
+      '@types/react-currency-format':
+        specifier: ^1.0.4
+        version: 1.0.4
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
@@ -1060,6 +1069,12 @@ packages:
     resolution:
       {
         integrity: sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==,
+      }
+
+  '@types/react-currency-format@1.0.4':
+    resolution:
+      {
+        integrity: sha512-qHxKxe7MSGbWkxTj6DAgnKFnc/zXrRPljxaBnw29IlLyBmTBXZjGuCnn3UBH+tzHrYBFt4mkmxbWqpyeq6Ls0g==,
       }
 
   '@types/react-dom@18.3.0':
@@ -4388,6 +4403,24 @@ packages:
         integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==,
       }
 
+  react-country-flag@3.1.0:
+    resolution:
+      {
+        integrity: sha512-JWQFw1efdv9sTC+TGQvTKXQg1NKbDU2mBiAiRWcKM9F1sK+/zjhP2yGmm8YDddWyZdXVkR8Md47rPMJmo4YO5g==,
+      }
+    engines: { node: '>=12' }
+    peerDependencies:
+      react: '>=16'
+
+  react-currency-format@1.1.0:
+    resolution:
+      {
+        integrity: sha512-WWrEOIp/3GbDSk1wlhFXaBc7IHGT3IwL306DHbGP3GVr4YFa0iS5hHPbKjHa0haruGL4Ly+WG4/5jBHpUtgqZg==,
+      }
+    peerDependencies:
+      react: ^0.14 || ^15.0.0-rc || ^15.0.0 || ^16.0.0-rc || ^16.0.0 || ^17.0.0
+      react-dom: ^0.14 || ^15.0.0-rc || ^15.0.0 || ^16.0.0-rc || ^16.0.0 || ^17.0.0
+
   react-dom@18.3.1:
     resolution:
       {
@@ -6143,6 +6176,10 @@ snapshots:
       undici-types: 6.19.8
 
   '@types/prop-types@15.7.13': {}
+
+  '@types/react-currency-format@1.0.4':
+    dependencies:
+      '@types/react': 18.3.10
 
   '@types/react-dom@18.3.0':
     dependencies:
@@ -8465,6 +8502,16 @@ snapshots:
   querystringify@2.2.0: {}
 
   queue-microtask@1.2.3: {}
+
+  react-country-flag@3.1.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+
+  react-currency-format@1.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:
