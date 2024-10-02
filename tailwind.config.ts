@@ -10,8 +10,8 @@ const config: Config = {
 		extend: {
 			colors: {
 				focus: '#2767b5',
-				grey: '#fbfff9',
-				highlight_grey: 'cfcfd1',
+				normal_grey: '#7373736c',
+				highlight_grey: '#cfcfd1',
 			},
 		},
 	},
