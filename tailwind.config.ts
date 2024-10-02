@@ -11,7 +11,7 @@ const config: Config = {
 			colors: {
 				focus: '#2767b5',
 				normal_grey: '#7373736c',
-				highlight_grey: '#cfcfd1',
+				highlight_grey: '#797979',
 			},
 		},
 	},
