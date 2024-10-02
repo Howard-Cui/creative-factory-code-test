@@ -11,7 +11,8 @@
 		"test": "jest",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "husky install",
-		"pre-commit": "pnpm run test && pnpm run lint && pnpm run format && git add ."
+		"pre-commit": "pnpm run commitlint && pnpm run test && pnpm run lint && pnpm run format && git add .",
+		"commitlint": "commitlint --edit --verbose"
 	},
 	"dependencies": {
 		"next": "14.2.13",
@@ -19,6 +20,9 @@
 		"react-dom": "^18"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^19.5.0",
+		"@commitlint/config-conventional": "^19.5.0",
+		"@commitlint/types": "^19.5.0",
 		"@testing-library/dom": "^10.4.0",
 		"@testing-library/jest-dom": "^6.5.0",
 		"@testing-library/react": "^16.0.1",
