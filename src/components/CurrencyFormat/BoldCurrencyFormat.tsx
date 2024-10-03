@@ -4,6 +4,7 @@ import CurrencyFormat, { Props } from 'react-currency-format';
 const BoldCurrencyFormat = (props: Props) => {
 	return (
 		<CurrencyFormat
+			data-testid="currency-format"
 			name="currency"
 			className="appearance-none border-none outline-none
         text-right w-auto bg-transparent focus:border-none

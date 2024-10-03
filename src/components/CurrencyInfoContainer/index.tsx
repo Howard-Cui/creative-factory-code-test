@@ -6,6 +6,7 @@ interface CurrencyInfoContainerProps {
 	children?: React.ReactNode;
 	countryCode: string;
 	currencyCodeDisplay: React.ReactNode;
+	className?: string;
 }
 
 const CurrencyInfoContainer = ({
@@ -13,11 +14,12 @@ const CurrencyInfoContainer = ({
 	children,
 	countryCode,
 	currencyCodeDisplay,
+	className,
 }: CurrencyInfoContainerProps) => {
 	return (
 		<div
-			className="w-4/5 h-12 rounded-md border-normal_grey hover:border-focus box-content border
-		 border-2 flex justify-between box-content"
+			className={`w-4/5 h-14 rounded-md border-normal_grey hover:border-focus box-content border
+		 border-2 flex justify-between box-content ${className}`}
 		>
 			<div className="w-11/12 flex justify-between items-center px-2">
 				<div className="flex gap-3 items-center h-full">

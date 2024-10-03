@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CurrencyInfoContainer from '..';
 import StrongCurrency from '@/components/Typography/StrongCurrency';
 import { LiaCalculatorSolid } from 'react-icons/lia';
-import { useState } from 'react';
 import { Values } from 'react-currency-format';
 import BoldCurrencyFormat from '@/components/CurrencyFormat/BoldCurrencyFormat';
 
@@ -18,7 +17,6 @@ const CurrencyInputContainer = ({
 	const handleOnSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		onSubmitCallback(currencyValue);
-		setCurrencyValue(0);
 	};
 
 	const handleOnChange = (values: Values) => {
@@ -30,6 +28,7 @@ const CurrencyInputContainer = ({
 		<form
 			onSubmit={handleOnSubmit}
 			className="w-full flex flex-col items-center"
+			onBlur={handleOnSubmit}
 		>
 			<CurrencyInfoContainer
 				countryCode="AU"
@@ -46,7 +45,7 @@ const CurrencyInputContainer = ({
 				<BoldCurrencyFormat
 					data-testid="currencyInput"
 					name="currency"
-					prefix={'$'}
+					prefix={'$ '}
 					value={currencyValue}
 					onValueChange={handleOnChange}
 				/>
