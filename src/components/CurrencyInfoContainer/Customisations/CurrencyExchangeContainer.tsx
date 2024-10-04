@@ -37,7 +37,7 @@ const CurrencyExchangeContainer = ({
 				>
 					<div className="flex flex-col gap-0.5 items-end">
 						<BoldCurrencyFormat
-							data-testid="test-target"
+							data-testid="currencyDisplay"
 							prefix={exchangeToPrefix}
 							value={exchangeFromValue * exchangeRate}
 						/>

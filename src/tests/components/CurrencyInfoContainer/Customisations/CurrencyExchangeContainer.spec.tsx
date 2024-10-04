@@ -17,7 +17,7 @@ describe('Tests for CurrencyExchangeContainer', () => {
 			/>
 		);
 
-		const currencyInput = screen.getByTestId('test-target');
+		const currencyInput = screen.getByTestId('currencyDisplay');
 		expect(currencyInput).toHaveValue('$ 0.50');
 	});
 });

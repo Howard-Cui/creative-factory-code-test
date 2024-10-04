@@ -3,7 +3,7 @@ import CurrencyExchangeContainer from '@/components/CurrencyInfoContainer/Custom
 import CurrencyInputContainer from '@/components/CurrencyInfoContainer/Customisations/CurrencyInputContainer';
 import { useState } from 'react';
 
-const preDefinedCurrency = [
+export const preDefinedCurrency = [
 	{
 		exchangeToCode: 'CAD',
 		exchangeToCountryCode: 'CA',
@@ -31,7 +31,7 @@ const preDefinedCurrency = [
 	},
 ];
 
-type ExchangeRate = {
+export type ExchangeRate = {
 	[key: string]: number;
 };
 
