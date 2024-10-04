@@ -1,45 +1,48 @@
+import { exchangeAPIs } from '@/APIs/exchangeAPI';
 import CurrencyExchangeContainer from '@/components/CurrencyInfoContainer/Customisations/CurrencyExchangeContainer';
 import CurrencyInputContainer from '@/components/CurrencyInfoContainer/Customisations/CurrencyInputContainer';
 import { useState } from 'react';
 
 const preDefinedCurrency = [
 	{
-		exchangeRate: 0.9163,
 		exchangeToCode: 'CAD',
 		exchangeToCountryCode: 'CA',
 		exchangeToPrefix: '$ ',
 	},
 	{
-		exchangeRate: 0.6167,
 		exchangeToCode: 'EUR',
 		exchangeToCountryCode: 'EU',
 		exchangeToPrefix: '€ ',
 	},
 	{
-		exchangeRate: 0.5439,
 		exchangeToCode: 'GBP',
 		exchangeToCountryCode: 'GB',
 		exchangeToPrefix: '£ ',
 	},
 	{
-		exchangeRate: 1.0712,
 		exchangeToCode: 'NZD',
 		exchangeToCountryCode: 'NZ',
 		exchangeToPrefix: '$ ',
 	},
 	{
-		exchangeRate: 0.6675,
 		exchangeToCode: 'USD',
 		exchangeToCountryCode: 'US',
 		exchangeToPrefix: '$ ',
 	},
 ];
 
-export default function Home() {
+type ExchangeRate = {
+	[key: string]: number;
+};
+
+interface HomePageProps {
+	rates: ExchangeRate;
+}
+
+export default function Home({ rates }: HomePageProps) {
 	const [baseValue, setBaseValue] = useState<number>(0);
 
 	const onCurrencyInputSubmit = (value: number) => {
-		//...
 		setBaseValue(value);
 	};
 
@@ -51,7 +54,7 @@ export default function Home() {
 					{preDefinedCurrency.map((curr) => (
 						<CurrencyExchangeContainer
 							key={curr.exchangeToCode}
-							exchangeRate={curr.exchangeRate}
+							exchangeRate={rates[curr.exchangeToCode] as number}
 							exchangeFromValue={baseValue}
 							exchangeFromCode="AUD"
 							exchangeToCountryCode={curr.exchangeToCountryCode}
@@ -63,4 +66,15 @@ export default function Home() {
 			</main>
 		</>
 	);
+}
+
+export async function getStaticProps() {
+	const rates = await exchangeAPIs.getRateBasedOnCode('AUD');
+
+	return {
+		props: {
+			rates,
+		},
+		revalidate: 3600,
+	};
 }
