@@ -55,5 +55,10 @@
 	"lint-staged": {
 		"*.{js, ts, jsx, tsx}": "npm run lint",
 		"*.--write": "npm run format"
-	}
+	},
+	"engines": {
+		"node": ">=20",
+		"pnpm": ">=9.4"
+	},
+	"engineStrict": true
 }

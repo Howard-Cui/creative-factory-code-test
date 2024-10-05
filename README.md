@@ -1,81 +1,45 @@
 # Creative Factory Code Test
 
-## Getting Started ✨ :sparkles:
+## Brief of Project Outcomes:
 
-### Install dependencies
+Since the main requirement for this app is to calculate real-time exchange rates, data timeliness and accuracy are crucial.
 
-```bash
-$ npm i
-```
+### Real Time Data：
 
-### Start the server
+In Fintech-related products, real-time data is undoubtedly a critical standard, as any delay in data could potentially lead to financial losses. In this Code Challenge, the API provided by Openexchangerates does not support **_Websocket_** or **_SSE_** connections. To address the real-time data issue, I implemented a **_polling mechanism_** by encapsulating a custom hook-usePolling, to frequently fetch and update the data.
 
-```bash
-$ npm run dev
-```
+However, although this approach seems to mitigate the problem of RESTful APIs being unable to push real-time data to the client, it’s not an optimal solution for the following reasons:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  SetInterval can be affected by the event loop, leading to inaccurate timing.
+2.  Frequent HTTP requests to the server may impose unnecessary overhead on both the client and the server.
 
-You can start editing the page by modifying `src/pages/index.tsx`. The page auto-updates as you edit the file.
+For these reasons, if time permits, I would opt to use Websocket as the data-fetching solution, and implement a Websocket endpoint using Node.js for the frontend to retrieve real-time data.
 
-### Environment Variables
+### Data Calculation Accuracy:
 
-Add a file named `.env` at the root directory. Ask Repository Owner for the .env file for our application
+Due to binary computation, JavaScript often loses precision when performing calculations with large numbers and float numbers. This issue is unacceptable in financial products. To resolve this, I used the **_Big.js_** library for currency conversion to minimize calculation errors.
 
-### Build for Deploy
+### Rendering Strategy:
 
-```shell
-$ npm run build
-```
+For this Code Challenge, I used Next.js and chose a hybrid rendering mode combining SSR (Server-Side Rendering) and CSR (Client-Side Rendering) for the exchange rate calculation page. We initiate the first real-time exchange rate data request on the server. After the page is loaded on the client side, polling is started to fetch real-time data. This ensures both real-time data updates and good SEO performance.
 
-### [Static HTML Export](https://nextjs.org/docs/advanced-features/static-html-export)
+On the Analytics page, since only historical data for the past 14 days is needed (and this data is not further subdivided), I opted for ISR (Incremental Static Regeneration). The page is re-rendered every 30 minutes.
 
-```shell
-$ npm run export
-```
+### Unit Testing:
 
-### Run the Production
+A mature commercial front-end project should have sufficient test cases and high test coverage. I applied the same standard in this project. I used Jest and React-Testing-Library for unit testing. Except for particularly complex cases, the tests cover the entire app, with a line coverage of 97.81%:
+![My Local Image](./public/Unit-Test-Screen-Shot.png)
 
-```shell
-$ npm run start
-```
+### Project Management:
 
-### Run All Test
+Although this is a personal project, I still aimed to standardize the project management process as much as possible. I used Husky for pre-commit hooks, ESLint and Prettier to ensure code quality, and pnpm as the package manager with a pre-install hook using npx pnpm-only to enforce package manager consistency. To ensure the project runs smoothly, please make sure your Node.js version is 20 or above, and your pnpm version is 9.4 or above. I also added an engine lock in package.json to enforce consistency in the runtime environment.
 
-```shell
-$ npm run test
-```
-
-### Run Single Test With Watching And Display Coverage
-
-```shell
-$ npm run test filename --watch --coverage
-```
-
-## Project structure
-
-```
-$PROJECT_ROOT
-│   # run some command when you commit
-├── husky
-│   #icon
-├── public
-│
-├── src
-│   │   # all unit tests
-│   ├── tests
-│   │   # all images
-│   ├── assets
-│   │   # react component files
-│   ├── components
-│   │   # Page layout
-│   ├── layouts
-│   │   # Page files
-│   ├── pages
-│   │   # styles
-│   ├── styles
-│   │   # All further encapsulation of libraries
-│   ├── libs
+```json
+	"engines": {
+		"node": ">=20",
+		"pnpm": ">=9.4"
+	},
+	"engineStrict": true
 ```
 
 ## Project Tech Stack
@@ -90,59 +54,95 @@ $PROJECT_ROOT
          • Framework: Next.js 14 Page Route (The React version we are using is 18)<br>
          • Scripting Language: Typescript<br>
          • Styling: TailwindCSS<br>
-         • ApiClient: Axios<br>
+         • ApiClient: Fetch API<br>
          • Testing: Jest, React-testing-library<br>
          • Code Control: Eslint, Prettier<br>
-         • Git Hook: Husky，commitlint, lint-staged<br>
+         • Git Hook: Husky，lint-staged<br>
+         • Package Manager: pnpm v9.4, node v20.4 <br>
       </td>
    </tr>
 </table>
 
-## Code of Conduct :clipboard:
+## Getting Started ✨ :sparkles:
 
-<table align="center" border=0>
-   <tr>
-      <td width="500"><b>1. Commit Message</b></td>
-   </tr>
-   <tr>
-      <td>
-         # Semantic Commit Messages
+### Install dependencies
 
-See how a minor change to your commit message style can make you a better programmer.
-
-Format: `<type>(<scope>): <subject>`
-
-`<scope>` is optional
-
-## Example
-
-```
-feat: add hat wobble
-^--^  ^------------^
-|     |
-|     +-> Summary in present tense.
-|
-+-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```bash
+$ pnpm install
 ```
 
-More Examples:
+### Start the server
 
-- `feat`: (new feature for the user, not a new feature for build script)
-- `fix`: (bug fix for the user, not a fix to a build script)
-- `docs`: (changes to the documentation)
-- `style`: (formatting, missing semi colons, etc; no production code change)
-- `refactor`: (refactoring production code, eg. renaming a variable)
-- `test`: (adding missing tests, refactoring tests; no production code change)
-- `chore`: (updating grunt tasks etc; no production code change)
+```bash
+$ pnpm run dev
+```
 
-References:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- https://www.conventionalcommits.org/
-- https://seesparkbox.com/foundry/semantic_commit_messages
-- http://karma-runner.github.io/1.0/dev/git-commit-msg.html
-  </td>
-   </tr>
+You can start editing the page by modifying `src/pages/index.tsx`. The page auto-updates as you edit the file.
 
-</table>
+### Environment Variables
+
+Add a file named `.env` at the root directory. Ask Repository Owner for the .env file for our application
+
+### Build for Deploy
+
+```shell
+$ pnpm run build
+```
+
+### Run the Production
+
+```shell
+$ pnpm run start
+```
+
+### Run All Test
+
+```shell
+$ pnpm run test
+```
+
+### Run Single Test With Watching And Display Coverage
+
+```shell
+$ pnpm run test filename --watch --coverage
+```
+
+## Project structure
+
+```
+$PROJECT_ROOT
+│   # run some command when you commit
+├── husky
+│   #icon
+├── public
+│
+├── src
+│   │   # All unit tests
+│   ├── tests
+│   │   # All organized API
+│   ├── APIs
+│   │   # All images
+│   ├── assets
+│   │   # React component files
+│   ├── components
+│   │   # All constants
+│   ├── constants
+│   │   # All types and interfaces
+│   ├── types
+|   │   # All hooks
+│   ├── hooks
+│   │   # Page layout
+│   ├── layouts
+│   │   # Page files
+│   ├── pages
+│   │   # Styles
+│   ├── styles
+│   │   # For all further encapsulation of another api and libraries
+│   ├── libs
+│   │   # All the utilities functions
+│   ├── utils
+```
 
 <i><b>Enjoy the journey!</b></i>:clap:
