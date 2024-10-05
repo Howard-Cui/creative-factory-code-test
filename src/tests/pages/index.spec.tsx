@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import Home, {
-	ExchangeRate,
-	getServerSideProps,
-	preDefinedCurrency,
-} from '@/pages';
+import Home, { getServerSideProps, preDefinedCurrency } from '@/pages';
 import '@testing-library/jest-dom';
+import { ExchangeRate } from '@/types/ExchangeRate';
 
 jest.mock('../../APIs/exchangeAPI.ts', () => ({
 	exchangeAPIs: {

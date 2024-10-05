@@ -2,6 +2,7 @@ import { exchangeAPIs } from '@/APIs/exchangeAPI';
 import CurrencyExchangeContainer from '@/components/CurrencyInfoContainer/Customisations/CurrencyExchangeContainer';
 import CurrencyInputContainer from '@/components/CurrencyInfoContainer/Customisations/CurrencyInputContainer';
 import { usePolling } from '@/hooks/usePolling';
+import { ExchangeRate } from '@/types/ExchangeRate';
 import { useEffect, useState } from 'react';
 
 export const preDefinedCurrency = [
@@ -32,10 +33,6 @@ export const preDefinedCurrency = [
 	},
 ];
 
-export type ExchangeRate = {
-	[key: string]: number;
-};
-
 interface HomePageProps {
 	rates: ExchangeRate;
 }
@@ -51,7 +48,6 @@ export default function Home({ rates }: HomePageProps) {
 
 	useEffect(() => {
 		if (data) {
-			console.log('!!!!!!', data);
 			setExchangeRate(data);
 		}
 	}, [data]);
