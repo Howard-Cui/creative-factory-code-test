@@ -21,6 +21,10 @@ const CurrencyInputContainer = ({
 
 	const handleOnChange = (values: Values) => {
 		const value = values.value;
+		if (value === '' || !value) {
+			setCurrencyValue((prev) => prev - prev / 1);
+			return;
+		}
 		setCurrencyValue(parseFloat(value));
 	};
 

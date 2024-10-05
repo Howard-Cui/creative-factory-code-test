@@ -65,6 +65,8 @@ Although this is a personal project, I still aimed to standardize the project ma
 
 ## Getting Started ✨ :sparkles:
 
+**Before start, please make sure you are using pnpm version 9.4 or above and nodejs version 20 or above, otherwise every manipulation will rejected by the engine lock**
+
 ### Install dependencies
 
 ```bash

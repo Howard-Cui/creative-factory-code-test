@@ -4,6 +4,7 @@ import CurrencyInputContainer from '@/components/CurrencyInfoContainer/Customisa
 import { PREDEFINED_CURRENCY } from '@/constants/PreDefinedCurrency';
 import { usePolling } from '@/hooks/usePolling';
 import { ExchangeRate } from '@/types/ExchangeRate';
+import React from 'react';
 import { useEffect, useState } from 'react';
 
 interface HomePageProps {
@@ -43,7 +44,10 @@ export default function Home({ rates }: HomePageProps) {
 					{PREDEFINED_CURRENCY.map((curr) => (
 						<CurrencyExchangeContainer
 							key={curr.exchangeToCode}
-							exchangeRate={exchangeRate[curr.exchangeToCode] as number}
+							exchangeRate={
+								((exchangeRate &&
+									exchangeRate[curr.exchangeToCode]) as number) ?? 1
+							}
 							exchangeFromValue={baseValue}
 							exchangeFromCode="AUD"
 							exchangeToCountryCode={curr.exchangeToCountryCode}
