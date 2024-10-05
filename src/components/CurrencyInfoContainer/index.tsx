@@ -17,7 +17,7 @@ const CurrencyInfoContainer = ({
 }: CurrencyInfoContainerProps) => {
 	return (
 		<div
-			className={`w-4/5 max-w-[500px] h-14 rounded-md border-normal_grey hover:border-focus box-content border
+			className={`w-full h-14 rounded-md border-normal_grey hover:border-focus box-content border
 		 border-2 flex justify-between box-content ${className}`}
 		>
 			<div className="w-11/12 flex justify-between items-center px-2">

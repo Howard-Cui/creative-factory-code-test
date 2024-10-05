@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import CurrencyInfoContainer from '..';
 import BoldCurrencyFormat from '@/components/CurrencyFormat/BoldCurrencyFormat';
+import { preciseCalculateExchangeResult } from '@/utils/preciseCalculateExchangeResult';
 
 export interface CurrencyExchangeContainerProps {
 	exchangeRate: number;
@@ -27,7 +28,7 @@ const CurrencyExchangeContainer = ({
 	return (
 		<div className="w-full flex justify-center items-center">
 			<Link
-				className="w-full flex justify-center"
+				className="w-4/5 max-w-[500px] flex justify-center"
 				href={`Analytics/${exchangeFromCode}-${exchangeToCode}`}
 			>
 				<CurrencyInfoContainer
@@ -39,7 +40,10 @@ const CurrencyExchangeContainer = ({
 						<BoldCurrencyFormat
 							data-testid="currencyDisplay"
 							prefix={exchangeToPrefix}
-							value={exchangeFromValue * exchangeRate}
+							value={preciseCalculateExchangeResult(
+								exchangeFromValue,
+								exchangeRate
+							)}
 						/>
 						<p className="text-normal_grey text-sm">
 							{`1 ${exchangeFromCode.toUpperCase()} = ${displayTargetExchangeRate} ${exchangeToCode.toUpperCase()}`}

@@ -27,7 +27,7 @@ const CurrencyInputContainer = ({
 	return (
 		<form
 			onSubmit={handleOnSubmit}
-			className="w-full flex flex-col items-center"
+			className="w-4/5 max-w-[500px] flex flex-col items-center"
 			onBlur={handleOnSubmit}
 		>
 			<CurrencyInfoContainer

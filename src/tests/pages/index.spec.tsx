@@ -2,7 +2,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import Home, {
 	ExchangeRate,
-	getStaticProps,
+	getServerSideProps,
 	preDefinedCurrency,
 } from '@/pages';
 import '@testing-library/jest-dom';
@@ -119,8 +119,7 @@ describe('testing for the home page', () => {
 	});
 
 	it('test get static props function return the value that API returned', async () => {
-		const res = await getStaticProps();
-		expect(res.revalidate).toBe(3600);
+		const res = await getServerSideProps();
 		expect(res.props.rates['USD']).toBe(1);
 		jest.clearAllMocks();
 	});
