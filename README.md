@@ -3,6 +3,8 @@
 ## Brief of Project Outcomes:
 
 Since the main requirement for this app is to calculate real-time exchange rates, data timeliness and accuracy are crucial.
+![My-Local-Image](./screenshot-of-working-app/Screenshot-of-app.png)
+![My-Local-Image](./screenshot-of-working-app/Screenshot-of-Analytics-Page.png)
 
 ### Real Time Data：
 
