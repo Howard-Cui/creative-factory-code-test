@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+import Header from '@/components/Header/Header';
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import '@testing-library/dom';

@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import Home, { getServerSideProps, preDefinedCurrency } from '@/pages';
+import Home, { getServerSideProps } from '@/pages';
 import '@testing-library/jest-dom';
 import { ExchangeRate } from '@/types/ExchangeRate';
+import { PREDEFINED_CURRENCY } from '@/constants/PreDefinedCurrency';
 
 jest.mock('../../APIs/exchangeAPI.ts', () => ({
 	exchangeAPIs: {
@@ -27,7 +28,7 @@ describe('testing for the home page', () => {
 
 	it('On the page, if change the input value of AUD and click calculator button, the value of other currency will change to the correct rate according to the exchange rate', async () => {
 		const exchangeRate = {};
-		preDefinedCurrency.forEach((item) => {
+		PREDEFINED_CURRENCY.forEach((item) => {
 			(exchangeRate as ExchangeRate)[item.exchangeToCode] = 1;
 		});
 		render(<Home rates={exchangeRate as unknown as ExchangeRate} />);
@@ -37,7 +38,7 @@ describe('testing for the home page', () => {
 		expect(audInput).toHaveValue('$ 0.00');
 		currencyDisplays.forEach((display, index) => {
 			expect(display).toHaveValue(
-				`${preDefinedCurrency[index].exchangeToPrefix}0.00`
+				`${PREDEFINED_CURRENCY[index].exchangeToPrefix}0.00`
 			);
 		});
 
@@ -50,7 +51,7 @@ describe('testing for the home page', () => {
 		await waitFor(() => {
 			currencyDisplays.forEach((display, index) => {
 				expect(display).toHaveValue(
-					`${preDefinedCurrency[index].exchangeToPrefix}1.00`
+					`${PREDEFINED_CURRENCY[index].exchangeToPrefix}1.00`
 				);
 			});
 		});
@@ -58,7 +59,7 @@ describe('testing for the home page', () => {
 
 	it('On the page, if change the input value of AUD and not focused, the value of other currency will change to the correct rate according to the exchange rate', async () => {
 		const exchangeRate = {};
-		preDefinedCurrency.forEach((item) => {
+		PREDEFINED_CURRENCY.forEach((item) => {
 			(exchangeRate as ExchangeRate)[item.exchangeToCode] = 1;
 		});
 		render(<Home rates={exchangeRate as unknown as ExchangeRate} />);
@@ -67,7 +68,7 @@ describe('testing for the home page', () => {
 		expect(audInput).toHaveValue('$ 0.00');
 		currencyDisplays.forEach((display, index) => {
 			expect(display).toHaveValue(
-				`${preDefinedCurrency[index].exchangeToPrefix}0.00`
+				`${PREDEFINED_CURRENCY[index].exchangeToPrefix}0.00`
 			);
 		});
 
@@ -80,7 +81,7 @@ describe('testing for the home page', () => {
 		await waitFor(() => {
 			currencyDisplays.forEach((display, index) => {
 				expect(display).toHaveValue(
-					`${preDefinedCurrency[index].exchangeToPrefix}1.00`
+					`${PREDEFINED_CURRENCY[index].exchangeToPrefix}1.00`
 				);
 			});
 		});
@@ -88,7 +89,7 @@ describe('testing for the home page', () => {
 
 	it('On the page, if change the input value of AUD , the value of other currency will not change if not focus out or click submit button', async () => {
 		const exchangeRate = {};
-		preDefinedCurrency.forEach((item) => {
+		PREDEFINED_CURRENCY.forEach((item) => {
 			(exchangeRate as ExchangeRate)[item.exchangeToCode] = 1;
 		});
 		render(<Home rates={exchangeRate as unknown as ExchangeRate} />);
@@ -97,7 +98,7 @@ describe('testing for the home page', () => {
 		expect(audInput).toHaveValue('$ 0.00');
 		currencyDisplays.forEach((display, index) => {
 			expect(display).toHaveValue(
-				`${preDefinedCurrency[index].exchangeToPrefix}0.00`
+				`${PREDEFINED_CURRENCY[index].exchangeToPrefix}0.00`
 			);
 		});
 
@@ -109,7 +110,7 @@ describe('testing for the home page', () => {
 		await waitFor(() => {
 			currencyDisplays.forEach((display, index) => {
 				expect(display).toHaveValue(
-					`${preDefinedCurrency[index].exchangeToPrefix}0.00`
+					`${PREDEFINED_CURRENCY[index].exchangeToPrefix}0.00`
 				);
 			});
 		});

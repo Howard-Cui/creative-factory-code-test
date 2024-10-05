@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CurrencyInfoContainer from '..';
+import CurrencyInfoContainer from '../CurrencyInfoContainer';
 import StrongCurrency from '@/components/Typography/StrongCurrency';
 import { LiaCalculatorSolid } from 'react-icons/lia';
 import { Values } from 'react-currency-format';

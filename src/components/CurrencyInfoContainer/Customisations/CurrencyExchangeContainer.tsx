@@ -2,7 +2,7 @@ import StrongCurrency from '@/components/Typography/StrongCurrency';
 import { transferExchangeValue } from '@/utils/transferExchangeValue';
 import Link from 'next/link';
 import React from 'react';
-import CurrencyInfoContainer from '..';
+import CurrencyInfoContainer from '../CurrencyInfoContainer';
 import BoldCurrencyFormat from '@/components/CurrencyFormat/BoldCurrencyFormat';
 import { preciseCalculateExchangeResult } from '@/utils/preciseCalculateExchangeResult';
 

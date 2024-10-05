@@ -1,4 +1,4 @@
-import CurrencyInfoContainer from '@/components/CurrencyInfoContainer';
+import CurrencyInfoContainer from '@/components/CurrencyInfoContainer/CurrencyInfoContainer';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
